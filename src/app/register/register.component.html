@@ -1,0 +1,9 @@
+<h1 class="registerText">Register to our page!</h1>
+
+<form #registerData="ngForm" (submit)="onSubmit(registerData.value)">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input class="form-control" id="username" aria-describedby="username" placeholder="Username" name="username">
+  </div>
+  <button class="btn btn-primary">Register</button>
+</form>
