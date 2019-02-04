@@ -1,9 +1,31 @@
-<h1 class="registerText">Register to our page!</h1>
+<h1 class="registerText">Register to our page</h1>
 
 <form #registerData="ngForm" (submit)="onSubmit(registerData.value)">
+
   <div class="form-group">
     <label for="username">Username</label>
-    <input class="form-control" id="username" aria-describedby="username" placeholder="Username" name="username">
+    <input class="form-control" id="username" aria-describedby="username" placeholder="Username" name="username"
+      ngModel>
   </div>
-  <button class="btn btn-primary">Register</button>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" aria-describedby="Password" name="password" ngModel
+      placeholder="Password">
+  </div>
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control" id="name" aria-describedby="Name" name="name" ngModel placeholder="Complete name">
+  </div>
+
+  <div class="form-group">
+    <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
+    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" ngModel name="status">
+      <option selected value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+  </div>
+
+  <button class="btn btn-dark">Register</button>
 </form>
