@@ -38,7 +38,6 @@ export class DBService {
   changeUserStatus(userStatus, id) {
     this.http.get(this.changeUserStatusURL + id).subscribe(
       (savedData: User) => {
-        console.log(savedData);
         let user = {
           adminStatus: savedData.adminStatus,
           id: savedData.id,

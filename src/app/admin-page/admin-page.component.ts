@@ -18,14 +18,12 @@ export class AdminPageComponent implements OnInit {
           this.DBUsers.push(users);
           this.DBUsers = this.DBUsers[0];
           this.DBUsers.shift();
-          console.log(this.DBUsers);
         }
       )
     }
   }
   changeVolunteerStatusWithId(statusData, userId) {
     this.db.changeUserStatus(statusData, userId);
-    console.log(statusData, userId);
   }
   deleteUser(userId) {
     this.db.deleteUser(userId);

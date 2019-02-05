@@ -1,8 +1,7 @@
 <h4 class="adminBoardTitle">Admin Board</h4>
 <div class="row">
   <div class="col-xm-12 col-sm-12 col-md-6 col-lg-6">
-    <h5 class="usersTitle">Users</h5>
-
+    <h5 class="title">Users</h5>
     <div class="user" *ngFor="let user of DBUsers">
       <h4>{{user.name}} - <span>{{ user.userStatus }}</span></h4>
       <div class="status" ng-show="state">
@@ -21,6 +20,9 @@
         </form>
       </div>
     </div>
+  </div>
+  <div class="col-xm-12 col-sm-12 col-md-6 col-lg-6">
+    <h5 class="title">Questions</h5>
 
   </div>
 </div>
