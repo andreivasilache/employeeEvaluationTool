@@ -2,6 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface localStorageUser {
+  username: string,
+  name: string,
+  status: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +16,20 @@ export class RegisterLoginService {
   getUserUrl = 'http://localhost:3000/users?username=';
   createUserUrl = 'http://localhost:3000/users';
 
-  constructor(private http: HttpClient) { }
+  loggedUser: localStorageUser;
+
+
+  IsAuth: boolean = localStorage ? true : false;
+
+
+  constructor(private http: HttpClient) {
+    const localStorageData: localStorageUser = this.getLoggedUserOnLocalStorage()
+    this.loggedUser = {
+      username: localStorageData.username,
+      name: localStorageData.name,
+      status: localStorageData.status,
+    }
+  }
 
   saveLoggedUserOnLocalStorage(username, nameOfUser, employeeStatus) {
     const user = {
@@ -36,8 +55,13 @@ export class RegisterLoginService {
     this.checkIfUserExists(data.username).subscribe(
       (dbUser) => {
         if (dbUser.length === 1) {
-          console.log(dbUser);
-          this.saveLoggedUserOnLocalStorage(dbUser[0].username, dbUser[0].name, dbUser[0].status);
+          const verifyCreditials: boolean = data.username === dbUser[0].username && data.password === dbUser[0].password;
+          if (verifyCreditials) {
+            this.saveLoggedUserOnLocalStorage(dbUser[0].username, dbUser[0].name, dbUser[0].status);
+            location.reload();
+          } else {
+            alert("The username password combination is wrong!")
+          }
         } else {
           alert("You need to register first!");
         }
@@ -51,15 +75,17 @@ export class RegisterLoginService {
     });
     let options = { headers: headers };
 
+
     this.checkIfUserExists(data.username).subscribe(
       (dbUser) => {
         if (dbUser.length === 1) {
-          console.log("This user is already registered, please log in!");
+          alert("This user is already registered, please log in!");
         } else {
-          this.http.post(this.createUserUrl, data, options)
+          return this.http.post(this.createUserUrl, data, options)
             .subscribe(
-              (registeredUser) => {
+              (registeredUser: localStorageUser) => {
                 this.saveLoggedUserOnLocalStorage(registeredUser.username, registeredUser.name, registeredUser.status);
+                location.reload();
               }
             );
         }

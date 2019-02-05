@@ -5,27 +5,28 @@
   <div class="form-group">
     <label for="username">Username</label>
     <input class="form-control" id="username" aria-describedby="username" placeholder="Username" name="username"
-      ngModel>
+      ngModel required>
   </div>
 
   <div class="form-group">
     <label for="password">Password</label>
     <input type="password" class="form-control" id="password" aria-describedby="Password" name="password" ngModel
-      placeholder="Password">
+      placeholder="Password" required>
   </div>
 
   <div class="form-group">
     <label for="name">Name</label>
-    <input class="form-control" id="name" aria-describedby="Name" name="name" ngModel placeholder="Complete name">
+    <input class="form-control" id="name" aria-describedby="Name" name="name" ngModel placeholder="Complete name"
+      required>
   </div>
 
   <div class="form-group">
     <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
-    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" ngModel name="status">
+    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" ngModel name="status" required>
       <option selected value="user">User</option>
       <option value="admin">Admin</option>
     </select>
   </div>
 
-  <button class="btn btn-dark">Register</button>
+  <button class="btn btn-dark" [disabled]="registerData.invalid">Register</button>
 </form>
