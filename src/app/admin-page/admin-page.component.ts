@@ -24,7 +24,11 @@ export class AdminPageComponent implements OnInit {
     }
   }
   changeVolunteerStatusWithId(statusData, userId) {
+    this.db.changeUserStatus(statusData, userId);
     console.log(statusData, userId);
+  }
+  deleteUser(userId) {
+    this.db.deleteUser(userId);
   }
 
   ngOnInit() {

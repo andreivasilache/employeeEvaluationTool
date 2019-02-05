@@ -16,7 +16,7 @@
           </select>
           <div class="userBtns">
             <button class="btn btn-success btn-sm userEditStateBtn" type="submit">Save</button>
-            <button class="btn btn-danger btn-sm userDeleteBtn" type="button">Delete user</button>
+            <button class="btn btn-danger btn-sm userDeleteBtn" type="button" (click)="deleteUser(user.id)">Delete user</button>
           </div>
         </form>
       </div>
