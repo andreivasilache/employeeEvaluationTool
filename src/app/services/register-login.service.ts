@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 export interface localStorageUser {
   username: string,
   name: string,
-  status: string
+  adminStatus: string,
+  userStatus: string
 }
 
 @Injectable({
@@ -18,24 +19,31 @@ export class RegisterLoginService {
 
   loggedUser: localStorageUser;
 
-
   IsAuth: boolean = localStorage ? true : false;
-
+  isAdmin: boolean;
 
   constructor(private http: HttpClient) {
-    const localStorageData: localStorageUser = this.getLoggedUserOnLocalStorage()
-    this.loggedUser = {
-      username: localStorageData.username,
-      name: localStorageData.name,
-      status: localStorageData.status,
+    if (localStorage.getItem('loggedUser')) {
+      const localStorageData: localStorageUser = this.getLoggedUserOnLocalStorage()
+      this.loggedUser = {
+        username: localStorageData.username,
+        name: localStorageData.name,
+        adminStatus: localStorageData.adminStatus,
+        userStatus: localStorageData.userStatus
+      }
+      console.log(localStorageData);
+      this.isAdmin = this.loggedUser.adminStatus === 'admin' ? true : false;
+    } else {
+      this.IsAuth = false;
     }
   }
 
-  saveLoggedUserOnLocalStorage(username, nameOfUser, employeeStatus) {
+  saveLoggedUserOnLocalStorage(username, nameOfUser, adminStatus, userStatus) {
     const user = {
       username: username,
       name: nameOfUser,
-      employeeStatus: employeeStatus
+      adminStatus: adminStatus,
+      userStatus: userStatus
     }
     localStorage.setItem('loggedUser', JSON.stringify(user));
   }
@@ -57,7 +65,7 @@ export class RegisterLoginService {
         if (dbUser.length === 1) {
           const verifyCreditials: boolean = data.username === dbUser[0].username && data.password === dbUser[0].password;
           if (verifyCreditials) {
-            this.saveLoggedUserOnLocalStorage(dbUser[0].username, dbUser[0].name, dbUser[0].status);
+            this.saveLoggedUserOnLocalStorage(dbUser[0].username, dbUser[0].name, dbUser[0].adminStatus, dbUser[0].userStatus);
             location.reload();
           } else {
             alert("The username password combination is wrong!")
@@ -78,13 +86,14 @@ export class RegisterLoginService {
 
     this.checkIfUserExists(data.username).subscribe(
       (dbUser) => {
+        console.log(dbUser);
         if (dbUser.length === 1) {
           alert("This user is already registered, please log in!");
         } else {
           return this.http.post(this.createUserUrl, data, options)
             .subscribe(
               (registeredUser: localStorageUser) => {
-                this.saveLoggedUserOnLocalStorage(registeredUser.username, registeredUser.name, registeredUser.status);
+                this.saveLoggedUserOnLocalStorage(registeredUser.username, registeredUser.name, registeredUser.adminStatus, registeredUser.userStatus);
                 location.reload();
               }
             );

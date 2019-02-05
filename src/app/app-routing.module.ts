@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminPageComponent },
   { path: 'evaluation', component: EvaluationToolComponent },
 
-  { path: '**', component: RegisterComponent }
+  { path: '**', component: EvaluationToolComponent }
 ];
 
 @NgModule({

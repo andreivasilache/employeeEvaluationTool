@@ -1,42 +1,32 @@
 {
   "users": [
     {
-      "id": "1"
+      "id": "1",
+      "username": "PivotElement"
     },
     {
       "username": "vasilacheandrei46@gmail.com",
       "password": "admin",
-      "name": "",
-      "status": "",
-      "id": "3dhenG2"
-    },
-    {
-      "username": "",
-      "password": "",
-      "name": "",
-      "status": "",
-      "id": "LY5A5h9"
+      "name": "Vasilache Andrei",
+      "adminStatus": "admin",
+      "userStatus": "Volunteer",
+      "id": "sT9xjQT"
     },
     {
       "username": "vasilacheandrei460@gmail.com",
       "password": "admin",
       "name": "Vasilache Andrei",
-      "status": "admin",
-      "id": "jPa8j1r"
+      "adminStatus": "user",
+      "userStatus": "Intern",
+      "id": "4VKrubm"
     },
     {
-      "username": "vasilacheandrei4600@gmail.com",
+      "username": "pop25",
       "password": "admin",
-      "name": "Vasilache Andrei",
-      "status": "admin",
-      "id": "TzfkR9R"
-    },
-    {
-      "username": "vasilacheandrei46@gmail.com11",
-      "password": "admin",
-      "name": "Vasilache Andrei",
-      "status": "user",
-      "id": "J19iQ3e"
+      "name": "Popescu ionut",
+      "adminStatus": "user",
+      "userStatus": "Intern",
+      "id": "UHNRT1s"
     }
   ],
   "question": []

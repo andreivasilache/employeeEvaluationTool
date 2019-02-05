@@ -22,9 +22,18 @@
 
   <div class="form-group">
     <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
-    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" ngModel name="status" required>
+    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" ngModel name="adminStatus" required>
       <option selected value="user">User</option>
       <option value="admin">Admin</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="userStatus">Status:</label>
+    <select id="userStatus" class="form-control" ngModel name="userStatus" required>
+      <option>Volunteer</option>
+      <option>Intern</option>
+      <option>Junior</option>
+      <option>Senior</option>
     </select>
   </div>
 

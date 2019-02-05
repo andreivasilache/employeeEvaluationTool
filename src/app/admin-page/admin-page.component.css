@@ -1,0 +1,20 @@
+.adminBoardTitle {
+  margin: 20px 0px;
+  text-align: center;
+}
+
+.usersTitle {
+  text-align: center;
+}
+
+.user {
+  margin: 40px 0px;
+}
+
+.userDeleteBtn {
+  margin: 0px 20px;
+}
+
+.userBtns {
+  margin-top: 15px;
+}
