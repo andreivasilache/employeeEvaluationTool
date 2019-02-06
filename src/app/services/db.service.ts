@@ -28,8 +28,6 @@ export class DBService {
   questionUrl = "http://localhost:3000/question";
   changeQuestionUrl = "http://localhost:3000/question/";
 
-
-
   constructor(private auth: RegisterLoginService, private http: HttpClient) {
     this.isAdmin = auth.isAdmin;
   }
@@ -59,27 +57,31 @@ export class DBService {
           username: savedData.username,
         }
         this.http.put(this.changeUserStatusURL + id, user).subscribe(
-          (e) => {
-            location.reload();
-            console.log("Data saved!");
-          }
+          (e) => location.reload()
         )
       }
     )
   }
   deleteUser(id) {
     this.http.delete(this.changeUserStatusURL + id).subscribe(
-      (userDeleted) => {
-        location.reload();
-      }
+      (userDeleted) => location.reload()
+    )
+  }
+  editQuestion(newQuestion, id) {
+    this.http.put(this.changeQuestionUrl + id, newQuestion).subscribe(
+      (savedQuestion) => location.reload()
     )
   }
 
   deleteQuestion(id) {
     this.http.delete(this.changeQuestionUrl + id).subscribe(
-      (deletedQuestion) => {
-        console.log("question deleted!");
-      }
+      (deletedQuestion) => location.reload()
+    )
+  }
+
+  saveNewQuestion(questionContent) {
+    this.http.post(this.questionUrl, questionContent).subscribe(
+      (savedQuestion) => location.reload()
     )
   }
 }

@@ -20,11 +20,15 @@
   margin-top: 15px;
 }
 
-.questionEditBtn {
+.questionEditBtnToggler {
   margin-left: 5px;
   margin-right: 15px;
 }
 
 .question {
   margin: 25px 0px;
+}
+
+.editQuestionForm {
+  margin: 20px 0px;
 }

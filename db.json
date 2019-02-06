@@ -1,5 +1,6 @@
 {
-  "users": [{
+  "users": [
+    {
       "id": "1",
       "username": "PivotElement"
     },
@@ -12,11 +13,14 @@
       "id": "eov3ast"
     }
   ],
-  "question": [{
-    "id": "1",
-    "content": "PivotElement"
-  }, {
-    "id": "1",
-    "content": "Lorem ipsum"
-  }]
+  "question": [
+    {
+      "editedQuestion": "asdasdasd",
+      "id": "1"
+    },
+    {
+      "content": "Lorem Ipsum!!!",
+      "id": "Tb2HKYG"
+    }
+  ]
 }
