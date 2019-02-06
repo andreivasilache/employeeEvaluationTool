@@ -23,6 +23,12 @@
   </div>
   <div class="col-xm-12 col-sm-12 col-md-6 col-lg-6">
     <h5 class="title">Questions</h5>
-
+    <div class="question" *ngFor="let question of Questions">
+      <h5>{{question.content}} </h5>
+      <button class="btn btn-primary btn-sm questionEditBtn" (click)="editQuestion(question.id)">Edit</button>
+      <div class="btn btn-danger btn-sm" (click)="deleteQuestion(question.id)">Delete</div>
+    </div>
+    <div class="btn btn-success float-right btn-sm">New question</div>
+    <form action=""></form>
   </div>
 </div>

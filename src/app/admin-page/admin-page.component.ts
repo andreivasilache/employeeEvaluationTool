@@ -10,6 +10,7 @@ import { DBService } from '../services/db.service';
 export class AdminPageComponent implements OnInit {
 
   DBUsers = [];
+  Questions = [];
 
   constructor(private db: DBService) {
     if (db.isAdmin) {
@@ -20,6 +21,12 @@ export class AdminPageComponent implements OnInit {
           this.DBUsers.shift();
         }
       )
+      this.db.getAllQuestionsFromDB().subscribe(
+        (questions) => {
+          questions.shift();
+          this.Questions.push(...questions);
+        }
+      )
     }
   }
   changeVolunteerStatusWithId(statusData, userId) {
@@ -27,6 +34,12 @@ export class AdminPageComponent implements OnInit {
   }
   deleteUser(userId) {
     this.db.deleteUser(userId);
+  }
+  editQuestion(id) {
+    console.log(id);
+  }
+  deleteQuestion(id) {
+    this.db.deleteQuestion(id);
   }
 
   ngOnInit() {

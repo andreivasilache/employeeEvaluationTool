@@ -13,6 +13,11 @@ export interface User {
   username: string,
 }
 
+export interface Question {
+  id: string,
+  content: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +25,9 @@ export class DBService {
   isAdmin: boolean;
   userURL = "http://localhost:3000/users";
   changeUserStatusURL = "http://localhost:3000/users/";
+  questionUrl = "http://localhost:3000/question";
+  changeQuestionUrl = "http://localhost:3000/question/";
+
 
 
   constructor(private auth: RegisterLoginService, private http: HttpClient) {
@@ -28,6 +36,10 @@ export class DBService {
 
   getAllUsersFromDb(): Observable<any> {
     return this.http.get(this.userURL);
+  }
+
+  getAllQuestionsFromDB(): Observable<any> {
+    return this.http.get(this.questionUrl);
   }
 
   /*
@@ -59,6 +71,14 @@ export class DBService {
     this.http.delete(this.changeUserStatusURL + id).subscribe(
       (userDeleted) => {
         location.reload();
+      }
+    )
+  }
+
+  deleteQuestion(id) {
+    this.http.delete(this.changeQuestionUrl + id).subscribe(
+      (deletedQuestion) => {
+        console.log("question deleted!");
       }
     )
   }

@@ -31,7 +31,6 @@ export class RegisterLoginService {
         adminStatus: localStorageData.adminStatus,
         userStatus: localStorageData.userStatus
       }
-      console.log(localStorageData);
       this.isAdmin = this.loggedUser.adminStatus === 'admin' ? true : false;
     } else {
       this.IsAuth = false;

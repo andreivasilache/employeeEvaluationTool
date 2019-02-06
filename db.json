@@ -1,6 +1,5 @@
 {
-  "users": [
-    {
+  "users": [{
       "id": "1",
       "username": "PivotElement"
     },
@@ -13,5 +12,11 @@
       "id": "eov3ast"
     }
   ],
-  "question": []
+  "question": [{
+    "id": "1",
+    "content": "PivotElement"
+  }, {
+    "id": "1",
+    "content": "Lorem ipsum"
+  }]
 }
