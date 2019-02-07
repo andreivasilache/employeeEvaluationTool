@@ -1,3 +1,20 @@
-<p>
-  evaluation-tool works!
-</p>
+<div class="questions" *ngFor="let question of questions">
+  <h5 class="question mt-5 mb-5">{{question.content}}</h5>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-secondary active">
+      <input type="radio" name="options" id="option1" autocomplete="off" checked> Strongly disagree
+    </label>
+    <label class="btn btn-secondary ml-2">
+      <input type="radio" name="options" id="option2" autocomplete="off"> Disagree
+    </label>
+    <label class="btn btn-secondary ml-2">
+      <input type="radio" name="options" id="option3" autocomplete="off"> Neutral
+    </label>
+    <label class="btn btn-secondary ml-2">
+      <input type="radio" name="options" id="option3" autocomplete="off"> Agree
+    </label>
+    <label class="btn btn-secondary ml-2">
+      <input type="radio" name="options" id="option3" autocomplete="off"> Strongly agree
+    </label>
+  </div>
+</div>

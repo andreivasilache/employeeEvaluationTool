@@ -5,12 +5,28 @@
       "username": "PivotElement"
     },
     {
-      "username": "vasilacheandrei46@gmail.com",
+      "adminStatus": "admin",
+      "id": "eov3ast",
+      "name": "Vasilache Andrei",
+      "password": "admin",
+      "userStatus": "Senior",
+      "username": "vasilacheandrei46@gmail.com"
+    },
+    {
+      "username": "vasilacheandrei461@gmail.com",
+      "password": "admin",
+      "name": "Vasilache Andrei",
+      "adminStatus": "user",
+      "userStatus": "Volunteer",
+      "id": "_h29jOX"
+    },
+    {
+      "username": "vasilacheandrei4611@gmail.com",
       "password": "admin",
       "name": "Vasilache Andrei",
       "adminStatus": "admin",
       "userStatus": "Volunteer",
-      "id": "eov3ast"
+      "id": "YL8KW7f"
     }
   ],
   "question": [
@@ -19,8 +35,100 @@
       "id": "1"
     },
     {
-      "content": "Lorem Ipsum!!!",
-      "id": "Tb2HKYG"
+      "content": "1.1  Can code and design important parts of an software application using best practices; Failures are not expected. ",
+      "id": "-gFwbK3"
+    },
+    {
+      "content": "1.2  Can code and design important parts of an software application using best practices; Failures are not expected. ",
+      "id": "oRN1s4M"
+    },
+    {
+      "content": "1.3  He/she is often completing tasks for production environment and code reviewing other pull requests from colleagues",
+      "id": "PByNyAT"
+    },
+    {
+      "content": "1.4  Can create database architecture and is comfortable in working with any kind of database systems, relational and NoSQL;",
+      "id": "QrtvTBw"
+    },
+    {
+      "content": "\n1.5  Experience with communication protocols like REST, Queue systems, etc.;\n",
+      "id": "L_Xk3wS"
+    },
+    {
+      "content": "1.6  Worked in teams of more than 3 developers;",
+      "id": "UggqVD0"
+    },
+    {
+      "content": "1.7  Is able to coordinate small teams",
+      "id": "kXtWdJn"
+    },
+    {
+      "content": "1.8  Is familiar with project management platforms and methodologies like SCRUM and Kanban;\n",
+      "id": "nrgctux"
+    },
+    {
+      "content": "1.9 Good English communication skills in both writing and conversation;\n",
+      "id": "QyYx2qM"
+    },
+    {
+      "content": "1.10 Has some contact with clients and mainly in writing;\n",
+      "id": "9eW-vnR"
+    },
+    {
+      "content": "1.11 Has at least 1 certification / certified course in his main area of expertise;\n",
+      "id": "kCIizhi"
+    },
+    {
+      "content": "1.12 Has worked with project management methodologies like Waterfall, Agile or Kanban for more than 6 months;\n",
+      "id": "m1DP04s"
+    },
+    {
+      "content": "1.13 Developed and held at least 1 internal workshop in his main area of expertise created blog posts/snippets with technological challenges he/she passed through \n",
+      "id": "b8fNIJj"
+    },
+    {
+      "content": "1.14 Originality or ingenuity;\n",
+      "id": "WRHb21J"
+    },
+    {
+      "content": "2.1  Self-learning;\n",
+      "id": "HAJoa51"
+    },
+    {
+      "content": "2.2  Find solutions for technical challenges inside project;\n",
+      "id": "o8IVtvu"
+    },
+    {
+      "content": "2.3  Create the shell at the beginning of projects;\n",
+      "id": "ouzxAOD"
+    },
+    {
+      "content": "2.4  Code parts of the app that require his expertise that is unique in the team;\n",
+      "id": "qyRYcb9"
+    },
+    {
+      "content": "2.5  Mentor SDE I and II, helping them in the learning process;\n",
+      "id": "vg0mdVO"
+    },
+    {
+      "content": "2.6  Offer support for internal trainings and workshops related to his main area of expertise;\n",
+      "id": "DUbj4pn"
+    },
+    {
+      "content": "2.7  Represent ASSIST in national conferences or workshops as participant and/or speaker or organized Play and Learn session(s).  \n",
+      "id": "L5CfKh7"
+    },
+    {
+      "content": "2.8  Develop a second area of expertise;\n",
+      "id": "GODJboT"
+    },
+    {
+      "content": "2.9  Usually works with minimum supervision;\n",
+      "id": "iIZMEMb"
+    },
+    {
+      "content": "2.10 Attended to internal competitions and events (Innovative Codecraft, Best Innovative Minds or other), or is involved in Open Allocation projects. \n",
+      "id": "02jxyca"
     }
   ]
 }

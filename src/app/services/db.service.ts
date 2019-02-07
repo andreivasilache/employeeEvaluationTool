@@ -23,6 +23,7 @@ export interface Question {
 })
 export class DBService {
   isAdmin: boolean;
+  questionCharMin: number = 10;
   userURL = "http://localhost:3000/users";
   changeUserStatusURL = "http://localhost:3000/users/";
   questionUrl = "http://localhost:3000/question";
@@ -38,6 +39,12 @@ export class DBService {
 
   getAllQuestionsFromDB(): Observable<any> {
     return this.http.get(this.questionUrl);
+  }
+
+  checkTextlength(text) {
+    if (text.length > this.questionCharMin) {
+      return true;
+    }
   }
 
   /*
@@ -57,31 +64,30 @@ export class DBService {
           username: savedData.username,
         }
         this.http.put(this.changeUserStatusURL + id, user).subscribe(
-          (e) => location.reload()
+          (e) => { }
         )
       }
     )
   }
   deleteUser(id) {
     this.http.delete(this.changeUserStatusURL + id).subscribe(
-      (userDeleted) => location.reload()
+      (userDeleted) => { }
+    )
+  }
+  saveNewQuestion(questionContent) {
+    this.http.post(this.questionUrl, questionContent).subscribe(
+      (savedQuestion) => { }
     )
   }
   editQuestion(newQuestion, id) {
     this.http.put(this.changeQuestionUrl + id, newQuestion).subscribe(
-      (savedQuestion) => location.reload()
+      (savedQuestion) => { }
     )
   }
-
   deleteQuestion(id) {
     this.http.delete(this.changeQuestionUrl + id).subscribe(
-      (deletedQuestion) => location.reload()
+      (deletedQuestion) => { }
     )
   }
 
-  saveNewQuestion(questionContent) {
-    this.http.post(this.questionUrl, questionContent).subscribe(
-      (savedQuestion) => location.reload()
-    )
-  }
 }

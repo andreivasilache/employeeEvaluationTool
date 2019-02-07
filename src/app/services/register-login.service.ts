@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 export interface localStorageUser {
   username: string,
@@ -22,7 +23,7 @@ export class RegisterLoginService {
   IsAuth: boolean = localStorage ? true : false;
   isAdmin: boolean;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private route: Router) {
     if (localStorage.getItem('loggedUser')) {
       const localStorageData: localStorageUser = this.getLoggedUserOnLocalStorage()
       this.loggedUser = {
@@ -64,8 +65,9 @@ export class RegisterLoginService {
         if (dbUser.length === 1) {
           const verifyCreditials: boolean = data.username === dbUser[0].username && data.password === dbUser[0].password;
           if (verifyCreditials) {
+            dbUser[0].adminStatus === 'admin' ? this.isAdmin = true : this.isAdmin = false;
+            dbUser[0].adminStatus === 'admin' ? this.route.navigate(['/admin']) : this.route.navigate(['/evaluation']);
             this.saveLoggedUserOnLocalStorage(dbUser[0].username, dbUser[0].name, dbUser[0].adminStatus, dbUser[0].userStatus);
-            location.reload();
           } else {
             alert("The username password combination is wrong!")
           }
@@ -93,7 +95,9 @@ export class RegisterLoginService {
             .subscribe(
               (registeredUser: localStorageUser) => {
                 this.saveLoggedUserOnLocalStorage(registeredUser.username, registeredUser.name, registeredUser.adminStatus, registeredUser.userStatus);
-                location.reload();
+                registeredUser.adminStatus === 'admin' ? this.isAdmin = true : this.isAdmin = false;
+                registeredUser.adminStatus === 'admin' ? this.route.navigate(['/admin']) : this.route.navigate(['/evaluation']);
+                this.IsAuth = true;
               }
             );
         }

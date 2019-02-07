@@ -28,7 +28,7 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="userStatus">Status:</label>
+    <label for="userStatus">Position</label>
     <select id="userStatus" class="form-control" ngModel name="userStatus" required>
       <option>Volunteer</option>
       <option>Intern</option>
@@ -37,5 +37,5 @@
     </select>
   </div>
 
-  <button class="btn btn-dark" [disabled]="registerData.invalid">Register</button>
+  <button class="btn btn-dark mb-5" [disabled]="registerData.invalid ">Register</button>
 </form>
