@@ -51,6 +51,7 @@ export class RegisterLoginService {
   getLoggedUserOnLocalStorage() {
     const localStorageData = localStorage.getItem('loggedUser');
     if (localStorage) {
+      this.loggedUser = JSON.parse(localStorageData);
       return JSON.parse(localStorageData);
     }
   }

@@ -9,6 +9,7 @@ import { RegisterLoginService } from '../services/register-login.service';
 export class NavbarComponent implements OnInit {
 
   constructor(public auth: RegisterLoginService) {
+    this.auth.getLoggedUserOnLocalStorage();
   }
 
   ngOnInit() {
