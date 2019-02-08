@@ -80,7 +80,8 @@ export class DBService {
     )
   }
   editQuestion(newQuestion, id) {
-    this.http.put(this.changeQuestionUrl + id, newQuestion).subscribe(
+    console.log(newQuestion);
+    this.http.put(this.changeQuestionUrl + id, { 'content': newQuestion }).subscribe(
       (savedQuestion) => { }
     )
   }

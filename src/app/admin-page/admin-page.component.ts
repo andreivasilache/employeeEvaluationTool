@@ -17,28 +17,22 @@ export class AdminPageComponent implements OnInit {
 
   constructor(private db: DBService, private auth: RegisterLoginService) {
     auth.IsAuth = localStorage.loggedUser ? true : false;
-    if (db.isAdmin) {
-      if (this.DBUsers.length == 0) {
-        this.db.getAllUsersFromDb().subscribe(
-          (users) => {
-            this.DBUsers.push(users);
-            this.DBUsers = this.DBUsers[0];
-            this.DBUsers.shift();
-          }
-        )
+    this.db.getAllUsersFromDb().subscribe(
+      (users) => {
+        this.DBUsers.push(users);
+        this.DBUsers = this.DBUsers[0];
+        this.DBUsers.shift();
       }
-      if (this.Questions.length == 0) {
-        this.db.getAllQuestionsFromDB().subscribe(
-          (questions) => {
-            questions.shift();
-            this.Questions.push(...questions);
-            for (let i = 0; i < questions.lenght; i++) {
-              this.showChangeQuestionForm[i] = false;
-            }
-          }
-        )
+    )
+    this.db.getAllQuestionsFromDB().subscribe(
+      (questions) => {
+        questions.shift();
+        this.Questions.push(...questions);
+        for (let i = 0; i < questions.lenght; i++) {
+          this.showChangeQuestionForm[i] = false;
+        }
       }
-    }
+    )
   }
 
   changeVolunteerStatusWithId(statusData, userId, vectorIndex) {
@@ -47,11 +41,10 @@ export class AdminPageComponent implements OnInit {
   }
 
   saveEditedQuestion(newQuestion, id, index) {
-    if (this.db.checkTextlength(newQuestion.content)) {
-      this.db.editQuestion(newQuestion, id);
-      this.Questions[index].content = newQuestion.content;
-      this.toggleEditInput(index);
-    }
+    console.log(newQuestion);
+    this.Questions[index].content = newQuestion;
+    this.toggleEditInput(index);
+    this.db.editQuestion(newQuestion, id);
   }
 
   toggleEditInput(index) {
@@ -78,8 +71,10 @@ export class AdminPageComponent implements OnInit {
   }
 
   deleteQuestion(id, index) {
-    this.db.deleteQuestion(id);
-    this.Questions.splice(index, 1);
+    if (confirm("This question will be permanently deleted.")) {
+      this.db.deleteQuestion(id);
+      this.Questions.splice(index, 1);
+    }
   }
 
   ngOnInit() {

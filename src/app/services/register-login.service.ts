@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
 export interface localStorageUser {
@@ -21,7 +21,11 @@ export class RegisterLoginService {
   loggedUser: localStorageUser;
 
   IsAuth: boolean = localStorage ? true : false;
-  isAdmin: boolean;
+  isAdmin: boolean = false;
+  nameOfUser;
+
+  registerErrMsg = new Subject<string>();
+  loginErrMsg = new Subject<string>();
 
   constructor(private http: HttpClient, private route: Router) {
     if (localStorage.getItem('loggedUser')) {
@@ -33,6 +37,8 @@ export class RegisterLoginService {
         userStatus: localStorageData.userStatus
       }
       this.isAdmin = this.loggedUser.adminStatus === 'admin' ? true : false;
+      this.nameOfUser = this.loggedUser.name ? this.loggedUser.name : '';
+
     } else {
       this.IsAuth = false;
     }
@@ -67,13 +73,15 @@ export class RegisterLoginService {
           const verifyCreditials: boolean = data.username === dbUser[0].username && data.password === dbUser[0].password;
           if (verifyCreditials) {
             dbUser[0].adminStatus === 'admin' ? this.isAdmin = true : this.isAdmin = false;
+            this.IsAuth = true;
             dbUser[0].adminStatus === 'admin' ? this.route.navigate(['/admin']) : this.route.navigate(['/evaluation']);
+            this.nameOfUser = dbUser[0].name;
             this.saveLoggedUserOnLocalStorage(dbUser[0].username, dbUser[0].name, dbUser[0].adminStatus, dbUser[0].userStatus);
           } else {
-            alert("The username password combination is wrong!")
+            this.loginErrMsg.next("The username password combination is wrong!")
           }
         } else {
-          alert("You need to register first!");
+          this.loginErrMsg.next("You need to register first!")
         }
       }
     )
@@ -90,7 +98,7 @@ export class RegisterLoginService {
       (dbUser) => {
         console.log(dbUser);
         if (dbUser.length === 1) {
-          alert("This user is already registered, please log in!");
+          this.registerErrMsg.next("This user is already registered, please log in!")
         } else {
           return this.http.post(this.createUserUrl, data, options)
             .subscribe(

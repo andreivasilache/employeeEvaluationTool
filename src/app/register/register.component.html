@@ -1,35 +1,45 @@
 <h1 class="registerText">Register to our page</h1>
 
+<div class="alert alert-danger" role="alert" *ngIf="errMsg">
+  {{errMsg}}
+</div>
+
 <form #registerData="ngForm" (submit)="onSubmit(registerData.value)">
 
   <div class="form-group">
     <label for="username">Username</label>
-    <input class="form-control" id="username" aria-describedby="username" placeholder="Username" name="username"
-      ngModel required>
+    <input class="form-control {{registerUsername.touched && registerUsername.invalid ? 'is-invalid':''}}" id="username" aria-describedby="username" placeholder="Username" name="username"
+      ngModel required #registerUsername="ngModel" minlength="4">
+      <div class="text-danger" *ngIf="!registerUsername.valid && registerUsername.touched ">
+        There should be more than 4 characters.
+      </div>
   </div>
 
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" aria-describedby="Password" name="password" ngModel
-      placeholder="Password" required>
+    <input type="password" class="form-control {{registeredPassword.touched && registeredPassword.invalid ? 'is-invalid':''}}" id="password" aria-describedby="Password" name="password" ngModel
+      placeholder="Password" required #registeredPassword="ngModel" minlength="4">
+      <div class="text-danger" *ngIf="!registeredPassword.valid && registeredPassword.touched ">
+        There should be more than 4 characters.
+      </div>
   </div>
 
   <div class="form-group">
     <label for="name">Name</label>
-    <input class="form-control" id="name" aria-describedby="Name" name="name" ngModel placeholder="Complete name"
-      required>
+    <input class="form-control {{registerName.touched && registerName.invalid ? 'is-invalid':''}}" id="name" aria-describedby="Name" name="name" ngModel placeholder="Complete name"
+      required #registerName="ngModel">
   </div>
 
   <div class="form-group">
     <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
-    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" ngModel name="adminStatus" required>
+    <select class="custom-select mr-sm-2 {{adminStatusRegister.touched && adminStatusRegister.invalid ? 'is-invalid':''}}" id="inlineFormCustomSelect " ngModel name="adminStatus" required #adminStatusRegister="ngModel">
       <option selected value="user">User</option>
       <option value="admin">Admin</option>
     </select>
   </div>
   <div class="form-group">
     <label for="userStatus">Position</label>
-    <select id="userStatus" class="form-control" ngModel name="userStatus" required>
+    <select id="userStatus" class="form-control {{userPosition.touched && userPosition.invalid ? 'is-invalid':''}}" ngModel name="userStatus" required #userPosition="ngModel">
       <option>Volunteer</option>
       <option>Intern</option>
       <option>Junior</option>

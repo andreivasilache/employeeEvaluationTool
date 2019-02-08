@@ -6,12 +6,18 @@
       <div class="status" ng-show="state">
         <form #statusData="ngForm" (submit)="changeVolunteerStatusWithId(statusData.value,user.id,index)">
           <label for="userStatus">Status:</label>
-          <select id="userStatus" class="form-control" required ngModel name="newStatus">
+          <select id="userStatus" class="form-control {{!selectStatus.valid && selectStatus.touched ? 'is-invalid':''}}"
+            required ngModel name="newStatus" #selectStatus="ngModel">
             <option>Volunteer</option>
             <option>Intern</option>
             <option>Junior</option>
             <option>Senior</option>
           </select>
+
+          <div class="error-message" *ngIf="!selectStatus.valid && selectStatus.touched">
+            Please select an option.
+          </div>
+
           <div class="userBtns">
             <button class="btn btn-success btn-sm userEditStateBtn" type="submit">Save</button>
             <button class="btn btn-danger btn-sm userDeleteBtn" type="button" (click)="deleteUser(user.id,index,user.name)">Delete
@@ -32,7 +38,12 @@
       <div class="editQuestionForm" *ngIf="showChangeQuestionForm[i]">
         <form #editQuestion="ngForm" (submit)="saveEditedQuestion(editQuestion.value,question.id,i)">
           <label for="editQuestion">Edit this question:</label>
-          <textarea class="form-control" rows="2" id="editQuestion" ngModel name="content" required></textarea>
+          <textarea class="form-control {{!editQuestion.valid && editQuestion.touched ? 'is-invalid':''}}" rows="2"
+            minlength="6" id="editQuestion" name="content" [ngModel]="Questions[i].content" #editQuestion="ngModel"
+            required></textarea>
+          <div class="error-message" *ngIf="!editQuestion.valid">
+            There need to be more than 6 characters.
+          </div>
           <button class="btn btn-success float-right btn-sm mt-1 mb-7" type="submit">Save</button>
         </form>
       </div>

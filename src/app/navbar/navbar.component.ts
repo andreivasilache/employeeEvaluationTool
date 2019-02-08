@@ -8,7 +8,8 @@ import { RegisterLoginService } from '../services/register-login.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public auth: RegisterLoginService) {
+  constructor(private auth: RegisterLoginService) {
+    console.log(this.auth.isAdmin);
     this.auth.getLoggedUserOnLocalStorage();
   }
 
@@ -18,6 +19,7 @@ export class NavbarComponent implements OnInit {
     this.auth.loggedUser = null;
     this.auth.IsAuth = false;
     localStorage.clear();
+    location.reload();
   }
 
 }
